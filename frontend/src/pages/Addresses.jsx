@@ -53,7 +53,7 @@ const Addresses = () => {
 
   const contactInfo = {
     phone: PRIMARY_CONTACT_PHONE,
-    email: "hprealstate2019@gmail.com",
+    email: "demorealstate2019@gmail.com",
   };
 
   const handleBranchClick = (branch) => {

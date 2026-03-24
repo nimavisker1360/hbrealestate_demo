@@ -4,6 +4,7 @@ import {
   runRealEstateAssistant,
   transcribeAssistantAudio,
 } from "../services/realEstateAssistant.js";
+import { PUBLIC_CONTACT_PHONE } from "../utils/publicContact.js";
 
 export const assistantChat = asyncHandler(async (req, res) => {
   const { message, history, attribution } = req.body || {};
@@ -111,7 +112,7 @@ export const assistantSendResults = asyncHandler(async (req, res) => {
               <p style="margin: 0 0 8px; color: #333; font-weight: 600;">Need more information?</p>
               <p style="margin: 0; color: #555; font-size: 13px; line-height: 1.5;">
                 Contact us directly:<br/>
-                <strong>Phone:</strong> +90 542 435 9694<br/>
+                <strong>Phone:</strong> ${PUBLIC_CONTACT_PHONE}<br/>
                 <strong>Email:</strong> hprealstate2019@gmail.com
               </p>
             </div>

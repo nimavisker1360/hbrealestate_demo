@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 import { bilingualKey } from "../utils/bilingualToast";
 import { getOptimizedImageUrl } from "../utils/media";
 import { resolveProjectPath, resolvePropertyPath } from "../utils/seo";
+import { normalizeWhatsAppNumber } from "../utils/common";
+import { PRIMARY_CONTACT_PHONE } from "../constant/data";
 
 // Get category display name (bilingual)
 const getCategoryLabel = (category, propertyType, lang = "tr") => {
@@ -170,7 +172,9 @@ const PropertyCard = ({ property, onCardClick }) => {
     }
   };
 
-  const whatsappHref = `https://wa.me/905551234567?text=${encodeURIComponent(
+  const whatsappHref = `https://wa.me/${normalizeWhatsAppNumber(
+    PRIMARY_CONTACT_PHONE
+  )}?text=${encodeURIComponent(
     `Hi, I'm interested in the property: ${property.title} - ${formattedPrice}`
   )}`;
 

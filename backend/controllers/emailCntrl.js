@@ -6,6 +6,7 @@ import {
   LEAD_STATUS_VALUES,
 } from "../utils/leadAttribution.js";
 import { handleLeadStatusTransition } from "../services/leadStatusWorkflow.js";
+import { PUBLIC_CONTACT_PHONE } from "../utils/publicContact.js";
 
 // Create transporter with Gmail
 const createTransporter = () => {
@@ -178,7 +179,7 @@ export const sendEmail = asyncHandler(async (req, res) => {
               <p style="color: #555; line-height: 1.6;">Thank you for contacting demo International Real Estate. We have received your inquiry and will get back to you as soon as possible.</p>
               <p style="color: #555; line-height: 1.6;">In the meantime, feel free to browse our properties or contact us directly:</p>
               <div style="background: white; padding: 15px; border-radius: 5px; margin: 20px 0; border: 1px solid #e0e0e0;">
-                <p style="margin: 5px 0; color: #555;"><strong>Phone:</strong> +90 542 435 9694</p>
+                <p style="margin: 5px 0; color: #555;"><strong>Phone:</strong> ${PUBLIC_CONTACT_PHONE}</p>
                 <p style="margin: 5px 0; color: #555;"><strong>Email:</strong> hprealstate2019@gmail.com</p>
               </div>
               <p style="color: #555; line-height: 1.6;">Best regards,<br><strong style="color: #06a84e;">demo International Team</strong></p>

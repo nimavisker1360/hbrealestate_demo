@@ -15,6 +15,7 @@ import useConsultants from "../hooks/useConsultants";
 import ContactModal from "../components/ContactModal";
 import { normalizeWhatsAppNumber } from "../utils/common";
 import PhoneLink from "../components/PhoneLink";
+import { PRIMARY_CONTACT_PHONE } from "../constant/data";
 
 // Helper function to get localized field
 const getLocalizedField = (consultant, field, language) => {
@@ -291,7 +292,7 @@ const Consultants = () => {
                 {currentLang === "tr" ? "Geri Arama İste" : "Request Callback"}
               </button>
               <a 
-                href={`https://wa.me/${normalizeWhatsAppNumber("+90 542 435 96 94")}`}
+                href={`https://wa.me/${normalizeWhatsAppNumber(PRIMARY_CONTACT_PHONE)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25D366] text-white font-medium px-7 py-[10px] rounded-lg hover:bg-[#20bd5a] transition-colors"

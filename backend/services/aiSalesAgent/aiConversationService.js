@@ -27,9 +27,10 @@ import {
   hasWhatsAppCloudApiConfig,
   sendLeadPackageToWhatsApp,
 } from "./whatsappCloudService.js";
+import { PUBLIC_CONTACT_WHATSAPP } from "../../utils/publicContact.js";
 
 const MAX_TRANSCRIPT_ITEMS = 24;
-const DEFAULT_AGENT_WHATSAPP_NUMBER = "905303871050";
+const DEFAULT_AGENT_WHATSAPP_NUMBER = PUBLIC_CONTACT_WHATSAPP;
 const MIN_RECOMMENDATION_SIGNALS = 2;
 const MAX_QUALIFICATION_GAPS_BEFORE_RECOMMENDATION = 8;
 const PRICE_FORMAT_LOCALE_BY_AI_LOCALE = {
@@ -511,11 +512,7 @@ const buildHandoffPayload = ({
   pageContext = {},
   sessionId = "",
 } = {}) => {
-  const whatsappNumber = safeText(
-    process.env.AI_SALES_AGENT_WHATSAPP_NUMBER ||
-      process.env.WHATSAPP_NUMBER ||
-      DEFAULT_AGENT_WHATSAPP_NUMBER
-  ).replace(/\D/g, "");
+  const whatsappNumber = DEFAULT_AGENT_WHATSAPP_NUMBER;
   const whatsappSummary = formatLeadForWhatsApp({
     lead: { ...lead, aiSessionId: sessionId },
     score,

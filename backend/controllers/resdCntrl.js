@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import { prisma, getMongoDb } from "../config/prismaConfig.js";
 import { ObjectId } from "mongodb";
+import { withPublicContact } from "../utils/publicContact.js";
 
 const SUPPORTED_CURRENCIES = ["USD", "EUR", "GBP", "TRY"];
 
@@ -318,7 +319,7 @@ export const getAllResidencies = asyncHandler(async (req, res) => {
         consultants.map((consultant) => {
           const id = consultant._id.toString();
           delete consultant._id;
-          return [id, { ...consultant, id }];
+          return [id, withPublicContact({ ...consultant, id })];
         })
       );
 
@@ -373,7 +374,7 @@ export const getResidency = asyncHandler(async (req, res) => {
           if (consultant) {
             consultant.id = consultant._id.toString();
             delete consultant._id;
-            residency.consultant = consultant;
+            residency.consultant = withPublicContact(consultant);
           }
         } catch (e) {
           console.log("Error fetching consultant:", e.message);

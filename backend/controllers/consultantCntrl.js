@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { prisma } from "../config/prismaConfig.js";
+import { withPublicContact } from "../utils/publicContact.js";
 
 // Get all consultants
 export const getAllConsultants = asyncHandler(async (req, res) => {
@@ -7,7 +8,7 @@ export const getAllConsultants = asyncHandler(async (req, res) => {
     const consultants = await prisma.consultant.findMany({
       orderBy: [{ order: "asc" }, { createdAt: "desc" }],
     });
-    res.status(200).json(consultants);
+    res.status(200).json(consultants.map((consultant) => withPublicContact(consultant)));
   } catch (err) {
     throw new Error(err.message);
   }
@@ -23,7 +24,7 @@ export const getConsultant = asyncHandler(async (req, res) => {
     if (!consultant) {
       return res.status(404).json({ message: "Consultant not found" });
     }
-    res.status(200).json(consultant);
+    res.status(200).json(withPublicContact(consultant));
   } catch (err) {
     throw new Error(err.message);
   }
@@ -63,7 +64,7 @@ export const createConsultant = asyncHandler(async (req, res) => {
 
     res.status(201).json({
       message: "Consultant created successfully",
-      consultant,
+      consultant: withPublicContact(consultant),
     });
   } catch (err) {
     console.error("Error creating consultant:", err);
@@ -122,7 +123,7 @@ export const updateConsultant = asyncHandler(async (req, res) => {
 
     res.status(200).json({
       message: "Consultant updated successfully",
-      consultant: updatedConsultant,
+      consultant: withPublicContact(updatedConsultant),
     });
   } catch (err) {
     console.error("Error updating consultant:", err);
@@ -174,7 +175,7 @@ export const toggleAvailability = asyncHandler(async (req, res) => {
 
     res.status(200).json({
       message: `Consultant is now ${updatedConsultant.available ? "available" : "unavailable"}`,
-      consultant: updatedConsultant,
+      consultant: withPublicContact(updatedConsultant),
     });
   } catch (err) {
     throw new Error(err.message);

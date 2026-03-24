@@ -1,6 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
+const VIRTUAL_CONTACT_PHONE = "+90 555 000 00 00";
+const VIRTUAL_CONTACT_WHATSAPP = "905550000000";
 
 const sampleConsultants = [
   {
@@ -12,8 +14,8 @@ const sampleConsultants = [
     rating: 4.9,
     reviews: 127,
     deals: 89,
-    phone: "+90 532 123 4567",
-    whatsapp: "905321234567",
+    phone: VIRTUAL_CONTACT_PHONE,
+    whatsapp: VIRTUAL_CONTACT_WHATSAPP,
     email: "sarah.johnson@casacentral.com",
     linkedin: "https://linkedin.com/in/sarahjohnson",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
@@ -29,8 +31,8 @@ const sampleConsultants = [
     rating: 4.8,
     reviews: 94,
     deals: 156,
-    phone: "+90 533 234 5678",
-    whatsapp: "905332345678",
+    phone: VIRTUAL_CONTACT_PHONE,
+    whatsapp: VIRTUAL_CONTACT_WHATSAPP,
     email: "michael.chen@casacentral.com",
     linkedin: "https://linkedin.com/in/michaelchen",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
@@ -46,8 +48,8 @@ const sampleConsultants = [
     rating: 4.7,
     reviews: 78,
     deals: 67,
-    phone: "+90 534 345 6789",
-    whatsapp: "905343456789",
+    phone: VIRTUAL_CONTACT_PHONE,
+    whatsapp: VIRTUAL_CONTACT_WHATSAPP,
     email: "emma.williams@casacentral.com",
     linkedin: "https://linkedin.com/in/emmawilliams",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
@@ -63,8 +65,8 @@ const sampleConsultants = [
     rating: 4.6,
     reviews: 52,
     deals: 234,
-    phone: "+90 535 456 7890",
-    whatsapp: "905354567890",
+    phone: VIRTUAL_CONTACT_PHONE,
+    whatsapp: VIRTUAL_CONTACT_WHATSAPP,
     email: "david.martinez@casacentral.com",
     linkedin: "https://linkedin.com/in/davidmartinez",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
@@ -80,8 +82,8 @@ const sampleConsultants = [
     rating: 4.9,
     reviews: 143,
     deals: 112,
-    phone: "+90 536 567 8901",
-    whatsapp: "905365678901",
+    phone: VIRTUAL_CONTACT_PHONE,
+    whatsapp: VIRTUAL_CONTACT_WHATSAPP,
     email: "lisa.anderson@casacentral.com",
     linkedin: "https://linkedin.com/in/lisaanderson",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
@@ -97,8 +99,8 @@ const sampleConsultants = [
     rating: 5.0,
     reviews: 189,
     deals: 78,
-    phone: "+90 537 678 9012",
-    whatsapp: "905376789012",
+    phone: VIRTUAL_CONTACT_PHONE,
+    whatsapp: VIRTUAL_CONTACT_WHATSAPP,
     email: "james.wilson@casacentral.com",
     linkedin: "https://linkedin.com/in/jameswilson",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",

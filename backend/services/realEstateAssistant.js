@@ -3,6 +3,10 @@ import { toFile } from "openai";
 import { ObjectId } from "mongodb";
 import { getMongoDb } from "../config/prismaConfig.js";
 import { extractLeadAttribution } from "../utils/leadAttribution.js";
+import {
+  PUBLIC_CONTACT_PHONE,
+  PUBLIC_CONTACT_WHATSAPP,
+} from "../utils/publicContact.js";
 
 let openaiClient = null;
 
@@ -698,8 +702,8 @@ function normalizeConsultantRecord(consultant, language = "en") {
     rating: normalizeNumber(consultant?.rating, 0),
     reviews: normalizeNumber(consultant?.reviews, 0),
     deals: normalizeNumber(consultant?.deals, 0),
-    phone: normalizeString(consultant?.phone),
-    whatsapp: normalizeString(consultant?.whatsapp),
+    phone: PUBLIC_CONTACT_PHONE,
+    whatsapp: PUBLIC_CONTACT_WHATSAPP,
     email: normalizeString(consultant?.email),
     image_url: normalizeString(consultant?.image),
     bio,
@@ -1838,8 +1842,8 @@ function normalizeConsultantItem(item = {}) {
     rating: normalizeNumber(item.rating, 0),
     reviews: normalizeNumber(item.reviews, 0),
     deals: normalizeNumber(item.deals, 0),
-    phone: normalizeString(item.phone),
-    whatsapp: normalizeString(item.whatsapp),
+    phone: PUBLIC_CONTACT_PHONE,
+    whatsapp: PUBLIC_CONTACT_WHATSAPP,
     email: normalizeString(item.email),
     image_url: normalizeString(item.image_url),
     bio: normalizeString(item.bio),
@@ -2684,5 +2688,4 @@ export async function runRealEstateAssistant({
   }
   return response;
 }
-
 

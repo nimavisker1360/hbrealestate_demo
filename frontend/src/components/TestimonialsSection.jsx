@@ -96,7 +96,14 @@ const TestimonialsSection = ({
   const useRemote = !Array.isArray(testimonials);
   const { data, isLoading } = useTestimonials({ enabled: useRemote });
 
-  const items = Array.isArray(testimonials) ? testimonials : data || [];
+  const rawItems = Array.isArray(testimonials)
+    ? testimonials
+    : Array.isArray(data)
+      ? data
+      : Array.isArray(data?.testimonials)
+        ? data.testimonials
+        : [];
+  const items = rawItems.filter(Boolean);
   const displayTestimonials = limit ? items.slice(0, limit) : items;
   const sampleTestimonials = [
     {
@@ -255,27 +262,30 @@ const TestimonialsSection = ({
     displayTestimonials.length > 0 ? displayTestimonials : sampleDisplay;
   const hasTestimonials = resolvedTestimonials.length > 0;
   const baseTestimonials = hasTestimonials ? resolvedTestimonials : sampleDisplay;
+  const safeBase = Array.isArray(baseTestimonials) ? baseTestimonials : [];
 
   // Ensure enough items for horizontal motion even with few testimonials
   const minSliderItems = 5;
   const sliderItems =
-    baseTestimonials.length >= minSliderItems
-      ? baseTestimonials
-      : Array.from({ length: minSliderItems }, (_, idx) => {
-          const item = baseTestimonials[idx % baseTestimonials.length];
-          return {
-            ...item,
-            _dupKey: `${item.id || item.name || "item"}-dup-${idx}`,
-          };
-        });
+    safeBase.length >= minSliderItems
+      ? safeBase
+      : safeBase.length > 0
+        ? Array.from({ length: minSliderItems }, (_, idx) => {
+            const item = safeBase[idx % safeBase.length];
+            return {
+              ...item,
+              _dupKey: `${item.id || item.name || "item"}-dup-${idx}`,
+            };
+          })
+        : sampleDisplay;
 
-  const averageRating = baseTestimonials.length
+  const averageRating = safeBase.length
     ? Math.round(
-        (baseTestimonials.reduce(
+        (safeBase.reduce(
           (sum, item) => sum + (Number(item.rating) || 0),
           0
         ) /
-          baseTestimonials.length) *
+          safeBase.length) *
           10
       ) / 10
     : 0;

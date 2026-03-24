@@ -154,7 +154,7 @@ export const sendEmail = asyncHandler(async (req, res) => {
               </div>
             </div>
             <div style="text-align: center; margin-top: 20px; color: #888; font-size: 12px;">
-              <p>This email was sent from HB International Real Estate website</p>
+              <p>This email was sent from demo International Real Estate website</p>
             </div>
           </div>
         `,
@@ -167,7 +167,7 @@ export const sendEmail = asyncHandler(async (req, res) => {
       const confirmationMail = {
         from: process.env.EMAIL_USER,
         to: email,
-        subject: "Thank you for contacting HB International",
+        subject: "Thank you for contacting demo International",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <div style="background: linear-gradient(135deg, #06a84e 0%, #048a3d 100%); padding: 30px; border-radius: 10px 10px 0 0;">
@@ -175,13 +175,13 @@ export const sendEmail = asyncHandler(async (req, res) => {
             </div>
             <div style="background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; border: 1px solid #e0e0e0; border-top: none;">
               <p style="color: #333; font-size: 16px;">Dear ${name},</p>
-              <p style="color: #555; line-height: 1.6;">Thank you for contacting HB International Real Estate. We have received your inquiry and will get back to you as soon as possible.</p>
+              <p style="color: #555; line-height: 1.6;">Thank you for contacting demo International Real Estate. We have received your inquiry and will get back to you as soon as possible.</p>
               <p style="color: #555; line-height: 1.6;">In the meantime, feel free to browse our properties or contact us directly:</p>
               <div style="background: white; padding: 15px; border-radius: 5px; margin: 20px 0; border: 1px solid #e0e0e0;">
                 <p style="margin: 5px 0; color: #555;"><strong>Phone:</strong> +90 542 435 9694</p>
                 <p style="margin: 5px 0; color: #555;"><strong>Email:</strong> hprealstate2019@gmail.com</p>
               </div>
-              <p style="color: #555; line-height: 1.6;">Best regards,<br><strong style="color: #06a84e;">HB International Team</strong></p>
+              <p style="color: #555; line-height: 1.6;">Best regards,<br><strong style="color: #06a84e;">demo International Team</strong></p>
             </div>
           </div>
         `,

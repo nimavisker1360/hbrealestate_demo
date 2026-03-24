@@ -130,7 +130,7 @@ const Footer = () => {
             <Link to={"/"} className="inline-block mb-4">
               <img
                 src={logo}
-                alt="HB International"
+                alt="demo International"
                 className="h-12 w-auto object-contain brightness-0 invert"
               />
             </Link>

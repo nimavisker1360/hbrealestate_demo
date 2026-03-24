@@ -189,9 +189,9 @@ const ProjectDetailSeoPage = () => {
   );
   const canonicalUrl = `${SITE_URL}${normalizedPathname}`;
 
-  const fallbackTitle = "Project Detail | Turkey | HB Real Estate";
+  const fallbackTitle = "Project Detail | Turkey | demo Real Estate";
   const seoTitle = project
-    ? `${projectTitle} | ${locationLabel} | Project | HB Real Estate`
+    ? `${projectTitle} | ${locationLabel} | Project | demo Real Estate`
     : fallbackTitle;
 
   const sourceDescription = pickText(
@@ -229,7 +229,7 @@ const ProjectDetailSeoPage = () => {
 
   const seoDescription =
     truncateText(descriptionParts.join(". "), 170) ||
-    "Explore this project detail and contact HB Real Estate for current availability and pricing.";
+    "Explore this project detail and contact demo Real Estate for current availability and pricing.";
 
   const primaryImage = project?.images?.[0] || project?.image || "/og-image.png";
 

@@ -94,7 +94,7 @@ export const assistantSendResults = asyncHandler(async (req, res) => {
     const userMail = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: `Your Property Selections - HB International Real Estate`,
+      subject: `Your Property Selections - demo International Real Estate`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 20px;">
           <div style="background: linear-gradient(135deg, #059669 0%, #0d9488 100%); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
@@ -117,7 +117,7 @@ export const assistantSendResults = asyncHandler(async (req, res) => {
             </div>
             <p style="color: #555; margin-top: 20px; font-size: 14px;">
               Best regards,<br/>
-              <strong style="color: #059669;">HB International Team</strong>
+              <strong style="color: #059669;">demo International Team</strong>
             </p>
           </div>
         </div>`,

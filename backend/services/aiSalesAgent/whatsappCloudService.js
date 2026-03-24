@@ -1,21 +1,21 @@
 const GRAPH_API_BASE_URL = "https://graph.facebook.com";
 const DEFAULT_GRAPH_API_VERSION = "v23.0";
-const DEFAULT_PUBLIC_BASE_URL = "https://www.hbrealstate.com";
+const DEFAULT_PUBLIC_BASE_URL = "https://www.demo.com";
 const DEFAULT_WHATSAPP_PHONE_NUMBER_ID = "969891392881690";
 const DEFAULT_WHATSAPP_BUSINESS_ACCOUNT_ID = "1408242017206702";
 const MAX_MEDIA_ITEMS = 3;
 
 const localizedCopy = {
   en: {
-    intro: "Hello {{name}}, here is your shortlisted property package from HB Real Estate.",
+    intro: "Hello {{name}}, here is your shortlisted property package from demo Real Estate.",
     option: "Option {{index}}: {{title}}{{price}}{{url}}",
   },
   tr: {
-    intro: "Merhaba {{name}}, HB Real Estate tarafindan sizin icin hazirlanan kisa liste burada.",
+    intro: "Merhaba {{name}}, demo Real Estate tarafindan sizin icin hazirlanan kisa liste burada.",
     option: "Secenek {{index}}: {{title}}{{price}}{{url}}",
   },
   ru: {
-    intro: "Zdravstvuyte, {{name}}. Vot vasha podborka obektov ot HB Real Estate.",
+    intro: "Zdravstvuyte, {{name}}. Vot vasha podborka obektov ot demo Real Estate.",
     option: "Variant {{index}}: {{title}}{{price}}{{url}}",
   },
 };

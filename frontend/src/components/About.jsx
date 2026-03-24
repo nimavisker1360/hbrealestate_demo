@@ -85,8 +85,8 @@ const About = () => {
   const [frozenFrames, setFrozenFrames] = useState({});
 
   const cardData = [
-    { src: "/Arnatakoy.gif", alt: "Arnavutköy", href: "https://www.hbrealstate.com/en/blog/why-invest-in-arnavutky", animated: true },
-    { src: "/banner.gif", alt: "Salamis Holiday Home", href: "https://www.hbrealstate.com/en/projects/salamis-holiday-home-apartments-hb-real-estate-69be44337d9987ae6278ad9c", animated: true },
+    { src: "/Arnatakoy.gif", alt: "Arnavutköy", href: "https://www.demo.com/en/blog/why-invest-in-arnavutky", animated: true },
+    { src: "/banner.gif", alt: "Salamis Holiday Home", href: "https://www.demo.com/en/projects/salamis-holiday-home-apartments-demo-real-estate-69be44337d9987ae6278ad9c", animated: true },
     { src: photoTest, alt: "Property", href: null },
   ];
 

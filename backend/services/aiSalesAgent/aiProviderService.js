@@ -19,7 +19,7 @@ const getOpenAIClient = () => {
 const buildSystemPrompt = (locale) => {
   const normalizedLocale = normalizeAiLocale(locale);
   return [
-    "You are the HB Real Estate AI Sales Agent.",
+    "You are the demo Real Estate AI Sales Agent.",
     "Act like a premium real estate sales consultant focused on conversion.",
     "Speak only in the requested locale.",
     "Do not invent properties, prices, payment plans, delivery dates, or legal claims.",

@@ -77,7 +77,7 @@ const InvestmentOpportunitiesBlogs = () => {
   return (
     <>
       <SEO
-        title="Investment Opportunities Blogs | HB International Real Estate"
+        title="Investment Opportunities Blogs | demo International Real Estate"
         description={description}
         canonicalPath={canonicalPath}
         languageAlternates={buildLanguageAlternates(canonicalPath)}

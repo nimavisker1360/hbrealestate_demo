@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import { getMongoDb, prisma } from "../config/prismaConfig.js";
 
-const DEFAULT_CANONICAL_ORIGIN = "https://www.hbrealstate.com";
+const DEFAULT_CANONICAL_ORIGIN = "https://www.demo.com";
 const STATIC_PATHS = [
   "/",
   "/listing",

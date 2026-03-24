@@ -82,7 +82,7 @@ const LoginModal = ({ isOpen, onClose }) => {
               <div className="inline-flex items-center justify-center bg-white rounded-2xl p-3 mb-4 shadow-lg">
                 <img
                   src={logo}
-                  alt="HB International"
+                  alt="demo International"
                   className="h-14 object-contain"
                 />
               </div>

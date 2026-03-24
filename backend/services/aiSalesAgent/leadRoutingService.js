@@ -318,28 +318,28 @@ export const sendLeadNotificationEmail = async (emailPayload = null) => {
 
 const LEAD_EMAIL_COPY = {
   en: {
-    subject: "Your Property Shortlist from HB Real Estate",
+    subject: "Your Property Shortlist from demo Real Estate",
     greeting: "Hello {{name}},",
     intro: "Thank you for your interest! Here are the properties we selected based on your preferences:",
     viewDetails: "View Details",
     footer: "If you have any questions, feel free to reply to this email or contact us via WhatsApp.",
-    team: "HB Real Estate Team",
+    team: "demo Real Estate Team",
   },
   tr: {
-    subject: "HB Real Estate - Sizin İçin Seçilen Gayrimenkuller",
+    subject: "demo Real Estate - Sizin İçin Seçilen Gayrimenkuller",
     greeting: "Merhaba {{name}},",
     intro: "İlginiz için teşekkür ederiz! Tercihlerinize göre seçtiğimiz gayrimenkuller:",
     viewDetails: "Detayları Gör",
     footer: "Herhangi bir sorunuz varsa bu e-postayı yanıtlayabilir veya WhatsApp üzerinden bize ulaşabilirsiniz.",
-    team: "HB Real Estate Ekibi",
+    team: "demo Real Estate Ekibi",
   },
   ru: {
-    subject: "Подборка недвижимости от HB Real Estate",
+    subject: "Подборка недвижимости от demo Real Estate",
     greeting: "Здравствуйте, {{name}}!",
     intro: "Спасибо за ваш интерес! Вот объекты, которые мы подобрали на основе ваших предпочтений:",
     viewDetails: "Подробнее",
     footer: "Если у вас есть вопросы, ответьте на это письмо или свяжитесь с нами через WhatsApp.",
-    team: "Команда HB Real Estate",
+    team: "Команда demo Real Estate",
   },
 };
 
@@ -353,7 +353,7 @@ const resolvePublicBaseUrl = () =>
     process.env.CANONICAL_BASE_URL ||
       process.env.SITEMAP_BASE_URL ||
       process.env.SITE_URL,
-    "https://www.hbrealstate.com"
+    "https://www.demo.com"
   );
 
 const toAbsolutePropertyUrl = (relativeUrl) => {
@@ -388,7 +388,7 @@ const buildLeadPackageHtml = ({ locale = "en", lead = {}, recommendations = [] }
 
     const imageBlock = imageUrl
       ? `<img src="${imageUrl}" alt="${title}" style="width:100%;max-height:200px;object-fit:cover;border-radius:8px 8px 0 0;" />`
-      : `<div style="width:100%;height:140px;background:#e8edf2;border-radius:8px 8px 0 0;display:flex;align-items:center;justify-content:center;color:#8899aa;font-size:14px;">HB Real Estate</div>`;
+      : `<div style="width:100%;height:140px;background:#e8edf2;border-radius:8px 8px 0 0;display:flex;align-items:center;justify-content:center;color:#8899aa;font-size:14px;">demo Real Estate</div>`;
 
     const meta = [rooms, paymentPlan].filter(Boolean).join(" · ");
 
@@ -408,7 +408,7 @@ const buildLeadPackageHtml = ({ locale = "en", lead = {}, recommendations = [] }
   return `
     <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto;background:#f5f7fa;padding:24px;">
       <div style="text-align:center;margin-bottom:20px;">
-        <h1 style="font-size:22px;color:#1a2b3c;margin:0;">HB Real Estate</h1>
+        <h1 style="font-size:22px;color:#1a2b3c;margin:0;">demo Real Estate</h1>
       </div>
       <div style="background:#ffffff;border-radius:12px;padding:24px;margin-bottom:16px;">
         <p style="font-size:15px;color:#1a2b3c;margin:0 0 8px;">${copy.greeting.replace("{{name}}", fullName || "")}</p>
@@ -446,7 +446,7 @@ const buildNoRecommendationsHtml = ({ locale = "en", lead = {} } = {}) => {
   return `
     <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto;background:#f5f7fa;padding:24px;">
       <div style="text-align:center;margin-bottom:20px;">
-        <h1 style="font-size:22px;color:#1a2b3c;margin:0;">HB Real Estate</h1>
+        <h1 style="font-size:22px;color:#1a2b3c;margin:0;">demo Real Estate</h1>
       </div>
       <div style="background:#ffffff;border-radius:12px;padding:24px;margin-bottom:16px;">
         <p style="font-size:15px;color:#1a2b3c;margin:0 0 8px;">${copy.greeting.replace("{{name}}", fullName || "")}</p>
@@ -484,7 +484,7 @@ export const sendLeadPackageByEmail = async ({
 
   try {
     await transporter.sendMail({
-      from: `"HB Real Estate" <${process.env.EMAIL_USER}>`,
+      from: `"demo Real Estate" <${process.env.EMAIL_USER}>`,
       to: recipientEmail,
       subject: copy.subject,
       html,

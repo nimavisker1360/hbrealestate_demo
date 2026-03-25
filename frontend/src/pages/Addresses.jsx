@@ -8,7 +8,7 @@ import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { buildEmailHref } from "../utils/common";
 import PhoneLink from "../components/PhoneLink";
-import { PRIMARY_CONTACT_PHONE } from "../constant/data";
+import { PRIMARY_CONTACT_EMAIL, PRIMARY_CONTACT_PHONE } from "../constant/data";
 
 // Fix leaflet default icon
 let DefaultIcon = L.icon({
@@ -53,7 +53,7 @@ const Addresses = () => {
 
   const contactInfo = {
     phone: PRIMARY_CONTACT_PHONE,
-    email: "demorealstate2019@gmail.com",
+    email: PRIMARY_CONTACT_EMAIL,
   };
 
   const handleBranchClick = (branch) => {

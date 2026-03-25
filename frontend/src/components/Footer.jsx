@@ -15,48 +15,69 @@ const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Footer links with translations
   const footerLinks = [
     {
-      title: t('footer.learnMore'),
+      title: t("footer.websiteFeatures"),
       links: [
-        { key: "aboutUs", label: t('footer.aboutUs'), isAbout: true },
-        { key: "latestItems", label: t('footer.latestItems') },
-        { key: "hotOffers", label: t('footer.hotOffers'), path: "/projects?hotOffers=1" },
+        {
+          key: "featAbout",
+          label: t("footer.featureAboutDemo"),
+          sectionId: "about",
+        },
+        {
+          key: "featSearch",
+          label: t("footer.featureAdvancedSearch"),
+          sectionId: "property-search",
+        },
+        { key: "featAdmin", label: t("footer.featureAdminPanel"), path: "/admin" },
+        {
+          key: "featLead",
+          label: t("footer.featureLeadForm"),
+          sectionId: "request-website",
+        },
       ],
     },
     {
-      title: t('footer.ourCommunity'),
+      title: t("footer.businessSolutions"),
       links: [
-        { key: "customerReviews", label: t('footer.customerReviews') },
-        { key: "addresses", label: t('footer.addresses'), path: "/addresses" },
+        {
+          key: "solLang",
+          label: t("footer.solutionMultilang"),
+          sectionId: "about-multilingual",
+        },
+        {
+          key: "solRes",
+          label: t("footer.solutionReservation"),
+          sectionId: "about-reservation",
+        },
+        {
+          key: "solAi",
+          label: t("footer.solutionAiSearch"),
+          sectionId: "about-ai-search",
+        },
+        {
+          key: "solMarket",
+          label: t("footer.solutionMarketInsights"),
+          sectionId: "about-market-insights",
+        },
       ],
     },
   ];
 
-  // Handle navigation to sections
-  const handleLinkClick = (link) => {
-    if (link.isAbout) {
-      if (location.pathname === "/") {
-        // Already on home page, just scroll to about section
-        const aboutSection = document.getElementById("about");
-        if (aboutSection) {
-          aboutSection.scrollIntoView({ behavior: "smooth" });
-        }
-      } else {
-        // Navigate to home page first, then scroll to about
-        navigate("/");
-        setTimeout(() => {
-          const aboutSection = document.getElementById("about");
-          if (aboutSection) {
-            aboutSection.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 100);
-      }
+  const scrollToSectionId = (sectionId) => {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSectionLink = (sectionId) => {
+    if (location.pathname === "/") {
+      scrollToSectionId(sectionId);
+    } else {
+      navigate("/");
+      setTimeout(() => scrollToSectionId(sectionId), 150);
     }
   };
 
-  // Helper to get icon based on label
   const getIcon = (label) => {
     if (label.toLowerCase().includes("address"))
       return (
@@ -73,30 +94,28 @@ const Footer = () => {
   };
 
   const whatsappHref = `https://wa.me/${normalizeWhatsAppNumber(
-    FOOTER_CONTACT_INFO.links.find((link) =>
-      link.label.toLowerCase().includes("number") ||
-      link.label.toLowerCase().includes("phone")
+    FOOTER_CONTACT_INFO.links.find(
+      (link) =>
+        link.label.toLowerCase().includes("number") ||
+        link.label.toLowerCase().includes("phone")
     )?.value
   )}`;
 
   return (
     <footer className="max-padd-container mb-4 overflow-x-hidden">
-      {/* Main Footer */}
       <div className="bg-[#1e2a38] rounded-tr-3xl rounded-tl-3xl pt-10 sm:pt-14 xl:pt-16 pb-10 px-6 sm:px-10 lg:px-16">
-        {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between gap-8 mb-10">
           <div className="max-w-lg">
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-              {t('footer.exploreTitle')}
+              {t("footer.exploreTitle")}
             </h3>
             <p className="text-white/60 text-sm leading-relaxed">
-              {t('footer.exploreDescription')}
+              {t("footer.exploreDescription")}
             </p>
           </div>
 
-          {/* Social Icons */}
           <div className="flex items-start gap-4">
-            {SOCIALS.links.map((link) => (
+            {SOCIALS.links.map((link) =>
               link.url ? (
                 <a
                   key={link.id}
@@ -116,67 +135,61 @@ const Footer = () => {
                   {link.icon}
                 </Link>
               )
-            ))}
+            )}
           </div>
         </div>
 
         <hr className="border-white/10 mb-10" />
 
-        {/* Bottom Section - Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Vision */}
           <div>
+            <h4 className="text-white font-semibold mb-4">
+              {t("footer.aboutDemoTitle")}
+            </h4>
             <p className="text-white/50 text-sm leading-relaxed">
-              {t('footer.visionText')}
+              {t("footer.aboutDemoBody")}
             </p>
           </div>
 
-          {/* Footer Links */}
           {footerLinks.map((col) => (
             <div key={col.title}>
               <h4 className="text-white font-semibold mb-5">{col.title}</h4>
               <ul className="flex flex-col gap-3">
                 {col.links.map((link) => (
                   <li key={link.key}>
-                    {link.isAbout ? (
-                      <button
-                        onClick={() => handleLinkClick(link)}
-                        className="text-white/50 text-sm hover:text-[#06a84e] transition-colors cursor-pointer"
-                      >
-                        {link.label}
-                      </button>
-                    ) : link.path ? (
+                    {link.path ? (
                       <Link
                         to={link.path}
                         className="text-white/50 text-sm hover:text-[#06a84e] transition-colors"
                       >
                         {link.label}
                       </Link>
-                    ) : (
-                      <Link
-                        to="/"
-                        className="text-white/50 text-sm hover:text-[#06a84e] transition-colors"
+                    ) : link.sectionId ? (
+                      <button
+                        type="button"
+                        onClick={() => handleSectionLink(link.sectionId)}
+                        className="text-left text-white/50 text-sm hover:text-[#06a84e] transition-colors cursor-pointer"
                       >
                         {link.label}
-                      </Link>
-                    )}
+                      </button>
+                    ) : null}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
 
-          {/* Contact Info */}
           <div>
             <h4 className="text-white font-semibold mb-5">
-              {t('footer.contactUs')}
+              {t("footer.requestSimilarWebsite")}
             </h4>
             <ul className="flex flex-col gap-4">
               {FOOTER_CONTACT_INFO.links
-                .filter((link) => 
-                  link.label.toLowerCase().includes("number") || 
-                  link.label.toLowerCase().includes("phone") ||
-                  link.label.toLowerCase().includes("email")
+                .filter(
+                  (link) =>
+                    link.label.toLowerCase().includes("number") ||
+                    link.label.toLowerCase().includes("phone") ||
+                    link.label.toLowerCase().includes("email")
                 )
                 .map((link, index) => {
                   const isPhone =
@@ -189,7 +202,7 @@ const Footer = () => {
                       <div>
                         <p className="text-white/40 text-xs mb-1">
                           {isPhone
-                            ? t("contact.contactNumber")
+                            ? t("contact.phone")
                             : t("contact.emailAddress")}
                         </p>
                         <p className="text-white text-sm">{link.value}</p>
@@ -244,15 +257,28 @@ const Footer = () => {
                   );
                 })}
             </ul>
+            {location.pathname === "/" ? (
+              <a
+                href="#request-website"
+                className="mt-6 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold text-white transition-colors hover:border-[#06a84e] hover:bg-[#06a84e]/20 hover:text-white"
+              >
+                {t("footer.requestWebsiteQuote")}
+              </a>
+            ) : (
+              <button
+                type="button"
+                onClick={() => handleSectionLink("request-website")}
+                className="mt-6 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold text-white transition-colors hover:border-[#06a84e] hover:bg-[#06a84e]/20 hover:text-white cursor-pointer"
+              >
+                {t("footer.requestWebsiteQuote")}
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Copyright */}
       <div className="bg-[#151f2b] py-4 px-6 sm:px-10 rounded-b-3xl flex flex-col sm:flex-row justify-between items-center gap-2">
-        <span className="text-white/50 text-sm">
-          {t('footer.copyright')}
-        </span>
+        <span className="text-white/50 text-sm">{t("footer.copyright")}</span>
       </div>
     </footer>
   );

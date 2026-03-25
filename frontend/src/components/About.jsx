@@ -262,7 +262,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="max-padd-container py-16 xl:py-28 overflow-x-hidden"
+      className="max-padd-container py-16 xl:py-28 overflow-x-hidden scroll-mt-20"
     >
       <h2 className="sr-only">{t("about.title")}</h2>
       <div className="flex flex-col xl:flex-row gap-10 xl:gap-12">
@@ -480,8 +480,16 @@ const About = () => {
           <ul className="relative mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {aboutContent.advancedFeatures.map((feat, featIndex) => {
               const accent = ADVANCED_CARD_ACCENTS[featIndex] ?? ADVANCED_CARD_ACCENTS[0];
+              const anchorId =
+                featIndex === 0
+                  ? "about-ai-search"
+                  : featIndex === 1
+                    ? "about-reservation"
+                    : featIndex === 2
+                      ? "about-market-insights"
+                      : undefined;
               return (
-                <li key={feat.title}>
+                <li key={feat.title} id={anchorId} className={anchorId ? "scroll-mt-24" : undefined}>
                   <div
                     className="group flex h-full gap-4 rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-200/60 hover:shadow-md sm:p-5"
                   >
@@ -509,9 +517,10 @@ const About = () => {
           {featureHighlights.map((item, index) => (
             <div
               key={item.title}
+              id={index === 0 ? "about-multilingual" : undefined}
               className={`rounded-2xl border border-slate-200/60 bg-primary p-5 shadow-sm transition-shadow hover:shadow-md ${
-                isVisible ? "animate-about-pop" : "opacity-0"
-              }`}
+                index === 0 ? "scroll-mt-24" : ""
+              } ${isVisible ? "animate-about-pop" : "opacity-0"}`}
               style={{ animationDelay: `${0.45 + index * 0.08}s` }}
             >
               <h3 className="text-lg font-semibold text-gray-900">

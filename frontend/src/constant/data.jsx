@@ -11,7 +11,8 @@ import blog4 from "../assets/blog4.jpg";
 // icons
 import { FaFacebook, FaInstagram } from "react-icons/fa6";
 
-export const PRIMARY_CONTACT_PHONE = "+90 555 000 00 00";
+export const PRIMARY_CONTACT_PHONE = "+90 552 607 89 00";
+export const PRIMARY_CONTACT_EMAIL = "nimabaghery@gmail.com";
 
 // properties data
 export const PROPERTIES = [
@@ -228,7 +229,7 @@ export const FOOTER_CONTACT_INFO = {
       value: "Ecevit Sok. Karalım Sitesi No:10/1, Göneyli, Lefkoşa",
     },
     { label: "Contact Number", value: PRIMARY_CONTACT_PHONE },
-    { label: "Email Address", value: "demorealstate2019@gmail.com" },
+    { label: "Email Address", value: PRIMARY_CONTACT_EMAIL },
   ],
 };
 

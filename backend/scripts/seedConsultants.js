@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-const VIRTUAL_CONTACT_PHONE = "+90 555 000 00 00";
-const VIRTUAL_CONTACT_WHATSAPP = "905550000000";
+const VIRTUAL_CONTACT_PHONE = "+90 552 607 89 00";
+const VIRTUAL_CONTACT_WHATSAPP = "905526078900";
 
 const sampleConsultants = [
   {

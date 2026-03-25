@@ -240,7 +240,7 @@ export const SOCIALS = {
     {
       icon: <FaInstagram />,
       id: "instagram",
-      url: "https://www.instagram.com/hb_gayrimenkul_international?igsh=MTZ3dTBsN2VpbGZ1NA%3D%3D&utm_source=qr",
+      noLink: true,
     },
   ],
 };

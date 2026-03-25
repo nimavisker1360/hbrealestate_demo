@@ -6,6 +6,7 @@ import Properties from '../components/Properties'
 import ConsultantsSection from '../components/ConsultantsSection'
 import TestimonialsSection from '../components/TestimonialsSection'
 import Blogs from '../components/Blogs'
+import WebsiteRequestSection from '../components/WebsiteRequestSection'
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             {/* Divider Line */}
             <div className="w-full border-t border-gray-300"></div>
             <ConsultantsSection />
+            <WebsiteRequestSection />
             <TestimonialsSection autoScroll />
             <Blogs limit={4} showMore />
             <nav aria-label="SEO internal links" className="sr-only">

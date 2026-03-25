@@ -1,5 +1,4 @@
 import asyncHandler from "express-async-handler";
-import nodemailer from "nodemailer";
 import { prisma } from "../config/prismaConfig.js";
 import {
   extractLeadAttribution,
@@ -7,17 +6,11 @@ import {
 } from "../utils/leadAttribution.js";
 import { handleLeadStatusTransition } from "../services/leadStatusWorkflow.js";
 import { PUBLIC_CONTACT_PHONE } from "../utils/publicContact.js";
-
-// Create transporter with Gmail
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-};
+import {
+  createEmailTransporter,
+  getEmailRecipientAddress,
+  getEmailSenderAddress,
+} from "../utils/emailTransport.js";
 
 // Send email and save to database
 export const sendEmail = asyncHandler(async (req, res) => {
@@ -78,12 +71,17 @@ export const sendEmail = asyncHandler(async (req, res) => {
 
     // Try to send email (but don't fail if email sending fails)
     try {
-      const transporter = createTransporter();
+      const transporter = createEmailTransporter();
+      const senderEmail = getEmailSenderAddress();
+      const recipientEmail = getEmailRecipientAddress();
+      if (!transporter || !senderEmail || !recipientEmail) {
+        throw new Error("email_not_configured");
+      }
 
       // Email to the company
       const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+        from: senderEmail,
+        to: recipientEmail,
         replyTo: email,
         subject: subject || `New Contact from ${name}`,
         html: `
@@ -166,7 +164,7 @@ export const sendEmail = asyncHandler(async (req, res) => {
 
       // Send confirmation email to the user
       const confirmationMail = {
-        from: process.env.EMAIL_USER,
+        from: senderEmail,
         to: email,
         subject: "Thank you for contacting demo International",
         html: `
@@ -180,7 +178,7 @@ export const sendEmail = asyncHandler(async (req, res) => {
               <p style="color: #555; line-height: 1.6;">In the meantime, feel free to browse our properties or contact us directly:</p>
               <div style="background: white; padding: 15px; border-radius: 5px; margin: 20px 0; border: 1px solid #e0e0e0;">
                 <p style="margin: 5px 0; color: #555;"><strong>Phone:</strong> ${PUBLIC_CONTACT_PHONE}</p>
-                <p style="margin: 5px 0; color: #555;"><strong>Email:</strong> demorealstate2019@gmail.com</p>
+                <p style="margin: 5px 0; color: #555;"><strong>Email:</strong> ${recipientEmail}</p>
               </div>
               <p style="color: #555; line-height: 1.6;">Best regards,<br><strong style="color: #06a84e;">demo International Team</strong></p>
             </div>

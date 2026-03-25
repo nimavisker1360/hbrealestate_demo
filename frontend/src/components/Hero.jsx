@@ -136,6 +136,21 @@ const Hero = () => {
         <p className="text-lg sm:text-xl text-white/90 italic">
           {t("hero.subtitle")}
         </p>
+        <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row">
+          <a
+            href="#request-website"
+            aria-label="Scroll to website request form"
+            className="inline-flex min-w-[230px] items-center justify-center rounded-full bg-[#00A86B] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#00A86B]/30 transition hover:bg-[#009A61]"
+          >
+            Request Similar Website
+          </a>
+          <a
+            href="#about"
+            className="inline-flex min-w-[190px] items-center justify-center rounded-full border border-white/70 bg-white/10 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+          >
+            View Features
+          </a>
+        </div>
       </div>
 
       {/* Location Tabs */}

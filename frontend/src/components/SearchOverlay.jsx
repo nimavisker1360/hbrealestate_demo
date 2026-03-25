@@ -165,7 +165,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                           {property.city}, {property.country}
                         </p>
                       </div>
-                      <div className="text-sm font-bold text-[#06a84e] flex-shrink-0">
+                      <div className="property-price-pill flex-shrink-0 text-xs sm:text-sm">
                         {formatMoney(
                           convertAmount(
                             property.price,

@@ -229,7 +229,7 @@
     "touristFacility": "Turistik Tesis"
   },
   "hero": {
-    "title": "Doğru Lokasyon, Doğru Zaman, Doğru Yatırım",
+    "title": "Potansiyel Müşteri Oluşturmak İçin Tasarlanmış Modern Gayrimenkul Web Sitesi",
     "subtitle": "demo International ile premium gayrimenkul fırsatlarını keşfedin",
     "searchPlaceholder": "şehir, adres veya mülk adı ile arayın...",
     "exploreBtn": "Mülkleri Keşfet"
@@ -256,10 +256,16 @@
   },
   "properties": {
     "title": "Öne Çıkan Mülkler",
-    "subtitle": "Yaşam tarzınıza ve hayallerinize uygun olağanüstü mülkleri keşfedin",
-    "futureHomeAwaits": "Geleceğinizin Evi Sizi Bekliyor",
-    "findDreamHere": "Hayalinizdeki Evi Burada Bulun",
+    "subtitle": "Bu demo; akıllı filtreler, net kategorilendirme ve profesyonel ilan düzeniyle kullanıcıların sonuçlara daha hızlı ulaşmasını, daha iyi bir gezinme deneyimi yaşamasını ve işletmenizle daha kolay iletişim kurmasını hedefler.",
+    "futureHomeAwaits": "Gelişmiş Arama Sistemi",
+    "findDreamHere": "Gayrimenkul Siteleri İçin Profesyonel Arama ve Filtreleme",
+    "audienceLine": "Profesyonel ve kullanıcı dostu bir mülk sitesine ihtiyaç duyan emlak ofisleri, geliştiriciler ve danışmanlar için uygundur.",
+    "valueUx": "Daha iyi kullanıcı deneyimi",
+    "valueDiscovery": "Kolay mülk keşfi",
+    "valueTrust": "Daha güçlü güven",
+    "valueLeads": "Daha yüksek talep ve potansiyel müşteri",
     "viewMore": "Daha Fazla Görüntüle",
+    "viewListing": "İlanı görüntüle",
     "viewAll": "Tüm Mülkleri Görüntüle",
     "noProperties": "Mülk bulunamadı",
     "bedrooms": "Yatak Odası",

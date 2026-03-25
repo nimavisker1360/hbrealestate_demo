@@ -132,10 +132,10 @@ const Item = ({ property }) => {
       <h4 className="medium-18 line-clamp-1">{property.title}</h4>
       <p className="pt-2 mb-4 line-clamp-2">{property.description}</p>
       <div className="flexBetween flex-wrap gap-2">
-        <div className="bold-18 sm:bold-20">
+        <div className="property-price-pill text-sm sm:text-base">
           {formattedPrice}
           {!isForSale && (
-            <span className="text-sm font-normal text-gray-500">/ay</span>
+            <span className="ml-1 text-xs font-normal text-white/80">/ay</span>
           )}
         </div>
         <Link to={`/`}>

@@ -245,9 +245,9 @@ const PropertyCard = ({ property, onCardClick }) => {
             {isProject ? (
               // For projects - show "Starting from" price
               displayPrice > 0 ? (
-                <div>
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-sm text-gray-500">{t("propertyCard.startingFrom", "Başlangıç fiyatı")}</span>
-                  <span className="text-2xl font-bold text-green-600 ml-2">
+                  <span className="property-price-pill text-base sm:text-lg">
                     {formattedDisplayPrice}
                   </span>
                 </div>
@@ -257,7 +257,7 @@ const PropertyCard = ({ property, onCardClick }) => {
             ) : (
               // For regular properties
               <>
-                <span className="text-2xl font-bold text-green-600">
+                <span className="property-price-pill text-base sm:text-xl">
                   {formattedPrice}
                 </span>
                 {!isForSale && (

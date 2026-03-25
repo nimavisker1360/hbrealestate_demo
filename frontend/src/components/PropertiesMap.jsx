@@ -149,7 +149,7 @@ const PropertyMarker = ({ property, onPropertyClick }) => {
           <p className="text-xs text-gray-500">
             {property.city}, {property.country}
           </p>
-          <p className="text-sm font-bold text-green-600 mt-1">
+          <p className="property-price-pill mt-1 w-fit text-xs">
             {formattedPrice}
           </p>
         </div>

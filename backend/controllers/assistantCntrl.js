@@ -1,10 +1,14 @@
 import asyncHandler from "express-async-handler";
-import nodemailer from "nodemailer";
 import {
   runRealEstateAssistant,
   transcribeAssistantAudio,
 } from "../services/realEstateAssistant.js";
 import { PUBLIC_CONTACT_PHONE } from "../utils/publicContact.js";
+import {
+  createEmailTransporter,
+  getEmailRecipientAddress,
+  getEmailSenderAddress,
+} from "../utils/emailTransport.js";
 
 export const assistantChat = asyncHandler(async (req, res) => {
   const { message, history, attribution } = req.body || {};
@@ -44,13 +48,15 @@ export const assistantSendResults = asyncHandler(async (req, res) => {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    const transporter = createEmailTransporter();
+    const senderEmail = getEmailSenderAddress();
+    const recipientEmail = getEmailRecipientAddress();
+    if (!transporter || !senderEmail || !recipientEmail) {
+      return res.status(500).json({
+        success: false,
+        message: "Email service is not configured",
+      });
+    }
 
     const fullName = [firstName, lastName].filter(Boolean).join(" ");
 
@@ -93,7 +99,7 @@ export const assistantSendResults = asyncHandler(async (req, res) => {
       .join("");
 
     const userMail = {
-      from: process.env.EMAIL_USER,
+      from: senderEmail,
       to: email,
       subject: `Your Property Selections - demo International Real Estate`,
       html: `
@@ -113,7 +119,7 @@ export const assistantSendResults = asyncHandler(async (req, res) => {
               <p style="margin: 0; color: #555; font-size: 13px; line-height: 1.5;">
                 Contact us directly:<br/>
                 <strong>Phone:</strong> ${PUBLIC_CONTACT_PHONE}<br/>
-                <strong>Email:</strong> demorealstate2019@gmail.com
+                <strong>Email:</strong> ${recipientEmail}
               </p>
             </div>
             <p style="color: #555; margin-top: 20px; font-size: 14px;">
@@ -127,8 +133,8 @@ export const assistantSendResults = asyncHandler(async (req, res) => {
     await transporter.sendMail(userMail);
 
     const companyMail = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+      from: senderEmail,
+      to: recipientEmail,
       replyTo: email,
       subject: `AI Assistant Lead: ${fullName}`,
       html: `

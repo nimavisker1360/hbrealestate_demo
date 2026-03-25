@@ -13,6 +13,10 @@ import {
   MdList,
   MdLocationCity,
   MdPublic,
+  MdSpeed,
+  MdTravelExplore,
+  MdVerifiedUser,
+  MdSupportAgent,
 } from "react-icons/md";
 import CurrencyContext from "../context/CurrencyContext";
 import useConsultants from "../hooks/useConsultants";
@@ -252,7 +256,7 @@ const AnimatedCard = ({ children, delay = 0 }) => {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
+      className={`h-full transition-all duration-700 ease-out ${
         isVisible 
           ? 'opacity-100 translate-y-0 scale-100 blur-0' 
           : 'opacity-0 translate-y-6 scale-95 blur-sm'
@@ -687,14 +691,14 @@ const Properties = () => {
             <div className="h-4 w-64 bg-gray-200 rounded mx-auto animate-pulse" />
           </div>
           {/* Loading Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
             {[...Array(12)].map((_, i) => (
-              <div key={i} className="bg-white rounded-xl overflow-hidden animate-pulse shadow-sm border border-gray-100">
-                <div className="h-[140px] bg-gray-200" />
-                <div className="p-3 space-y-2">
-                  <div className="h-4 bg-gray-200 rounded w-3/4" />
-                  <div className="h-3 bg-gray-200 rounded w-1/2" />
-                  <div className="h-3 bg-gray-200 rounded w-full" />
+              <div key={i} className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm animate-pulse">
+                <div className="aspect-[5/3] w-full bg-gray-200" />
+                <div className="flex flex-1 flex-col gap-2 p-4">
+                  <div className="h-4 bg-gray-200 rounded-md w-4/5" />
+                  <div className="h-3 bg-gray-200 rounded-md w-3/5" />
+                  <div className="mt-auto h-6 bg-gray-100 rounded-full w-24" />
                 </div>
               </div>
             ))}
@@ -721,17 +725,38 @@ const Properties = () => {
         {/* Section Header */}
         <div 
           ref={headerRef}
-          className={`text-center mb-14 transition-all duration-1000 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`mb-14 text-center transition-all duration-1000 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <span className="investment-opportunities-pill relative mb-4 inline-block overflow-hidden rounded-md bg-emerald-500 px-4 py-1.5 text-sm font-medium text-white shadow-md">
-            <span className="relative z-[1]">{t("properties.futureHomeAwaits")}</span>
+          <span className="mb-5 inline-flex items-center rounded-full border border-emerald-200/80 bg-emerald-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-emerald-800 shadow-sm">
+            {t("properties.futureHomeAwaits")}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+          <h2 className="mx-auto mb-5 max-w-4xl text-balance text-3xl font-bold tracking-tight text-slate-900 md:text-4xl lg:text-[2.35rem] lg:leading-tight">
             {t("properties.findDreamHere")}
           </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-slate-600 md:text-[1.05rem]">
             {t("properties.subtitle")}
           </p>
+          <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-slate-500">
+            {t("properties.audienceLine")}
+          </p>
+          <ul className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+            {[
+              { icon: MdSpeed, label: t("properties.valueUx") },
+              { icon: MdTravelExplore, label: t("properties.valueDiscovery") },
+              { icon: MdVerifiedUser, label: t("properties.valueTrust") },
+              { icon: MdSupportAgent, label: t("properties.valueLeads") },
+            ].map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="flex items-center gap-3 rounded-xl border border-slate-200/90 bg-white/80 px-4 py-3 text-left shadow-sm backdrop-blur-sm"
+              >
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700">
+                  <Icon className="text-xl" aria-hidden />
+                </span>
+                <span className="text-sm font-medium leading-snug text-slate-800">{label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Filter Bar */}
@@ -1044,7 +1069,7 @@ const Properties = () => {
         </div>
 
         {/* Properties Grid - Exclude projects (they have their own pages) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
           {filteredProperties.slice(0, 12).map((property, index) => (
             <AnimatedCard key={property.id} delay={index * 100}>
               <PropertyGridCard property={property} />
@@ -1062,7 +1087,7 @@ const Properties = () => {
           <div className="flex justify-center mt-14">
             <Link
               to="/listing"
-              className="investment-opportunities-pill group relative overflow-hidden rounded-xl bg-emerald-500 px-8 py-3.5 font-medium text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25"
+              className="investment-opportunities-pill group relative overflow-hidden rounded-xl bg-[#00A770] px-8 py-3.5 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#00A770]/30"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {t("properties.viewAll")}
@@ -1070,7 +1095,7 @@ const Properties = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#008f5f] to-[#00c983] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
           </div>
         </AnimatedCard>

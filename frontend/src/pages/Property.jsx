@@ -781,7 +781,7 @@ const Property = () => {
           </div>
           <div className="flexBetween">
             <h4 className="medium-18">{data?.title}</h4>
-            <div className="bold-20">
+            <div className="property-price-pill shrink-0 text-sm sm:text-base">
               {formattedPrice}
             </div>
           </div>

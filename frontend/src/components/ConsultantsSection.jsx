@@ -240,97 +240,102 @@ const ConsultantsSection = () => {
       </div>
 
       {/* Listings Lease or Sell Faster Section */}
-      <AnimatedElement delay={100} className="mt-16">
-        <div className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1422] via-[#18263a] to-[#20334a] shadow-2xl ring-1 ring-white/10">
-          <div className="pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-emerald-400/15 blur-3xl"></div>
-          <div className="pointer-events-none absolute -bottom-28 right-10 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl"></div>
-          <div className="flex flex-col lg:flex-row">
-            {/* Left Content */}
-            <div className="flex-1 p-8 lg:p-12 xl:p-14">
-              <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-8 max-w-xl">
-                {t("consultantsSection.listingsFaster")}
-              </h2>
+      <div
+        id="features"
+        style={{ scrollMarginTop: "calc(var(--header-height) + 24px)" }}
+      >
+        <AnimatedElement delay={100} className="mt-16">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1422] via-[#18263a] to-[#20334a] shadow-2xl ring-1 ring-white/10">
+            <div className="pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-emerald-400/15 blur-3xl"></div>
+            <div className="pointer-events-none absolute -bottom-28 right-10 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl"></div>
+            <div className="flex flex-col lg:flex-row">
+              {/* Left Content */}
+              <div className="flex-1 p-8 lg:p-12 xl:p-14">
+                <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-8 max-w-xl">
+                  {t("consultantsSection.listingsFaster")}
+                </h2>
 
-              {/* Features Grid */}
-              <div className="grid grid-cols-1 gap-4 mb-8 max-w-2xl">
-                {/* Right Audience */}
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 min-h-[190px]">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
-                    <img
-                      src={iconAudience}
-                      alt={t("consultantsSection.rightAudience")}
-                      className="h-7 w-7 object-contain"
-                    />
+                {/* Features Grid */}
+                <div className="grid grid-cols-1 gap-4 mb-8 max-w-2xl">
+                  {/* Right Audience */}
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 min-h-[190px]">
+                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
+                      <img
+                        src={iconAudience}
+                        alt={t("consultantsSection.rightAudience")}
+                        className="h-7 w-7 object-contain"
+                      />
+                    </div>
+                    <h3 className="text-white font-semibold mb-2">
+                      {t("consultantsSection.rightAudience")}
+                    </h3>
+                    <p className="text-white/65 text-sm leading-relaxed">
+                      {t("consultantsSection.rightAudienceDesc")}
+                    </p>
                   </div>
-                  <h3 className="text-white font-semibold mb-2">
-                    {t("consultantsSection.rightAudience")}
-                  </h3>
-                  <p className="text-white/65 text-sm leading-relaxed">
-                    {t("consultantsSection.rightAudienceDesc")}
-                  </p>
+
+                  {/* Engage Prospects */}
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 min-h-[190px]">
+                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
+                      <img
+                        src={iconProspects}
+                        alt={t("consultantsSection.engageProspects")}
+                        className="h-7 w-7 object-contain"
+                      />
+                    </div>
+                    <h3 className="text-white font-semibold mb-2">
+                      {t("consultantsSection.engageProspects")}
+                    </h3>
+                    <p className="text-white/65 text-sm leading-relaxed">
+                      {t("consultantsSection.engageProspectsDesc")}
+                    </p>
+                  </div>
+
+                  {/* More Opportunity */}
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 min-h-[190px]">
+                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
+                      <img
+                        src={iconOpportunity}
+                        alt={t("consultantsSection.moreOpportunity")}
+                        className="h-7 w-7 object-contain"
+                      />
+                    </div>
+                    <h3 className="text-white font-semibold mb-2">
+                      {t("consultantsSection.moreOpportunity")}
+                    </h3>
+                    <p className="text-white/65 text-sm leading-relaxed">
+                      {t("consultantsSection.moreOpportunityDesc")}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Engage Prospects */}
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 min-h-[190px]">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
-                    <img
-                      src={iconProspects}
-                      alt={t("consultantsSection.engageProspects")}
-                      className="h-7 w-7 object-contain"
-                    />
-                  </div>
-                  <h3 className="text-white font-semibold mb-2">
-                    {t("consultantsSection.engageProspects")}
-                  </h3>
-                  <p className="text-white/65 text-sm leading-relaxed">
-                    {t("consultantsSection.engageProspectsDesc")}
-                  </p>
-                </div>
+                {/* CTA Button */}
+                <button
+                  onClick={() => navigate("/listing")}
+                  className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 mb-6"
+                >
+                  {t("consultantsSection.exploreMarketing")}
+                </button>
 
-                {/* More Opportunity */}
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 min-h-[190px]">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
-                    <img
-                      src={iconOpportunity}
-                      alt={t("consultantsSection.moreOpportunity")}
-                      className="h-7 w-7 object-contain"
-                    />
-                  </div>
-                  <h3 className="text-white font-semibold mb-2">
-                    {t("consultantsSection.moreOpportunity")}
-                  </h3>
-                  <p className="text-white/65 text-sm leading-relaxed">
-                    {t("consultantsSection.moreOpportunityDesc")}
-                  </p>
-                </div>
+                {/* Disclaimer */}
+                <p className="text-white/40 text-xs leading-relaxed">
+                  {t("consultantsSection.disclaimer")}
+                </p>
               </div>
 
-              {/* CTA Button */}
-              <button
-                onClick={() => navigate("/listing")}
-                className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 mb-6"
-              >
-                {t("consultantsSection.exploreMarketing")}
-              </button>
-
-              {/* Disclaimer */}
-              <p className="text-white/40 text-xs leading-relaxed">
-                {t("consultantsSection.disclaimer")}
-              </p>
-            </div>
-
-            {/* Right Image */}
-            <div className="relative lg:w-[45%] h-[280px] sm:h-[320px] lg:h-auto">
-              <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=60"
-                alt="Modern building at night"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#0c1422]/10 to-[#0c1422]/80"></div>
+              {/* Right Image */}
+              <div className="relative lg:w-[45%] h-[280px] sm:h-[320px] lg:h-auto">
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=60"
+                  alt="Modern building at night"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#0c1422]/10 to-[#0c1422]/80"></div>
+              </div>
             </div>
           </div>
-        </div>
-      </AnimatedElement>
+        </AnimatedElement>
+      </div>
       <ContactModal
         opened={isContactRoute}
         onClose={() => navigate("/", { replace: true })}

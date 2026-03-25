@@ -67,7 +67,7 @@ const RecommendationCards = ({ items, labels }) => {
                     </p>
                   </div>
                   {item.price_usd ? (
-                    <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+                    <span className="property-price-pill shrink-0 text-[11px]">
                       ${Number(item.price_usd).toLocaleString()}
                     </span>
                   ) : null}

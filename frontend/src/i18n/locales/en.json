@@ -229,7 +229,7 @@
     "touristFacility": "Tourist Facility"
   },
   "hero": {
-    "title": "Right Location, Right Time, Right Investment",
+    "title": "Modern Real Estate Website Designed to Generate Leads",
     "subtitle": "Discover premium real estate opportunities with demo International",
     "searchPlaceholder": "Search by city, address or property name...",
     "exploreBtn": "Explore Properties"
@@ -256,10 +256,16 @@
   },
   "properties": {
     "title": "Featured Properties",
-    "subtitle": "Discover exceptional properties that match your lifestyle and aspirations",
-    "futureHomeAwaits": "Your Future Home Awaits",
-    "findDreamHere": "Find Your Dream Here",
+    "subtitle": "This demo is designed with smart filters, precise categorization, and a professional property listing layout to help users find results faster, enjoy a better browsing experience, and connect with your business more easily.",
+    "futureHomeAwaits": "Advanced Search System",
+    "findDreamHere": "Professional Search and Filtering for Real Estate Websites",
+    "audienceLine": "Ideal for real estate agencies, developers, and consultants who need a professional and user-friendly property website.",
+    "valueUx": "Better user experience",
+    "valueDiscovery": "Easier property discovery",
+    "valueTrust": "Stronger trust",
+    "valueLeads": "Higher inquiry & lead potential",
     "viewMore": "View More",
+    "viewListing": "View listing",
     "viewAll": "View All Properties",
     "noProperties": "No properties found",
     "bedrooms": "Bedrooms",

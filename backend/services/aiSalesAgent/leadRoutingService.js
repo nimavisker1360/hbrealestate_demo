@@ -1,7 +1,11 @@
-import nodemailer from "nodemailer";
 import { prisma } from "../../config/prismaConfig.js";
 import { extractLeadAttribution } from "../../utils/leadAttribution.js";
 import { uploadQualifiedLeadConversion } from "../googleAdsQualifiedLeadUpload.js";
+import {
+  createEmailTransporter,
+  getEmailRecipientAddress,
+  getEmailSenderAddress,
+} from "../../utils/emailTransport.js";
 
 const hasValue = (value) =>
   value !== undefined && value !== null && String(value).trim() !== "";
@@ -29,17 +33,7 @@ const buildBudgetLabel = (lead = {}) => {
 };
 
 const createTransporter = () => {
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) return null;
-  const user = String(process.env.EMAIL_USER || "").trim();
-  const pass = String(process.env.EMAIL_PASS || "").replace(/\s+/g, "");
-  if (!user || !pass) return null;
-  return nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user,
-      pass,
-    },
-  });
+  return createEmailTransporter();
 };
 
 const CONTACT_MESSAGE_UPDATE_CHUNK_SIZE = 12;
@@ -300,13 +294,15 @@ export const buildAiLeadSummary = ({ lead = {}, score = {}, pageContext = {} } =
 
 export const sendLeadNotificationEmail = async (emailPayload = null) => {
   const transporter = createTransporter();
-  if (!transporter || !emailPayload?.subject) {
+  const senderEmail = getEmailSenderAddress();
+  const recipientEmail = getEmailRecipientAddress();
+  if (!transporter || !senderEmail || !recipientEmail || !emailPayload?.subject) {
     return { sent: false, reason: "email_not_configured" };
   }
 
   await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+    from: senderEmail,
+    to: recipientEmail,
     subject: emailPayload.subject,
     text: emailPayload.text,
     html: emailPayload.html,
@@ -483,8 +479,13 @@ export const sendLeadPackageByEmail = async ({
     : buildNoRecommendationsHtml({ locale, lead });
 
   try {
+    const senderEmail = getEmailSenderAddress();
+    if (!senderEmail) {
+      return { attempted: false, sent: false, reason: "email_not_configured", messages: [] };
+    }
+
     await transporter.sendMail({
-      from: `"demo Real Estate" <${process.env.EMAIL_USER}>`,
+      from: `"demo Real Estate" <${senderEmail}>`,
       to: recipientEmail,
       subject: copy.subject,
       html,

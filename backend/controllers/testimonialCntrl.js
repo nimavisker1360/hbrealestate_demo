@@ -1,21 +1,15 @@
 import asyncHandler from "express-async-handler";
-import nodemailer from "nodemailer";
 import { prisma } from "../config/prismaConfig.js";
+import {
+  createEmailTransporter,
+  getEmailRecipientAddress,
+  getEmailSenderAddress,
+} from "../utils/emailTransport.js";
 
 const clampRating = (value) => {
   const parsed = Number(value);
   if (Number.isNaN(parsed)) return 5;
   return Math.max(1, Math.min(5, Math.round(parsed)));
-};
-
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
 };
 
 // Public: get all published testimonials
@@ -76,10 +70,15 @@ export const submitTestimonial = asyncHandler(async (req, res) => {
     });
 
     try {
-      const transporter = createTransporter();
+      const transporter = createEmailTransporter();
+      const senderEmail = getEmailSenderAddress();
+      const recipientEmail = getEmailRecipientAddress();
+      if (!transporter || !senderEmail || !recipientEmail) {
+        throw new Error("email_not_configured");
+      }
       const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+        from: senderEmail,
+        to: recipientEmail,
         replyTo: email,
         subject: `New Testimonial from ${name}`,
         html: `

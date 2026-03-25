@@ -13,7 +13,8 @@ import ProfileModal from "./ProfileModal";
 import LanguageSwitcher from "./LanguageSwitcher";
 import SearchOverlay from "./SearchOverlay";
 import { normalizeWhatsAppNumber } from "../utils/common";
-import { PRIMARY_CONTACT_PHONE } from "../constant/data";
+import { PRIMARY_CONTACT_PHONE, PRIMARY_YOUTUBE_URL } from "../constant/data";
+import YouTubeBrandIcon from "./YouTubeBrandIcon";
 
 import CurrencyContext from "../context/CurrencyContext";
 
@@ -251,6 +252,15 @@ const Header = () => {
               >
                 <MdSearch size={20} />
               </button>
+              <a
+                href={PRIMARY_YOUTUBE_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-9 min-w-[2.5rem] items-center justify-center rounded-[10px] px-1 transition hover:scale-[1.06] active:scale-[0.98]"
+                aria-label={t("header.youtube")}
+              >
+                <YouTubeBrandIcon className="h-[24px] w-[34px] drop-shadow-[0_2px_6px_rgba(180,0,0,0.45),0_1px_0_rgba(255,255,255,0.35)]" />
+              </a>
               <a
                 href={`https://wa.me/${normalizeWhatsAppNumber(PRIMARY_CONTACT_PHONE)}`}
                 target="_blank"

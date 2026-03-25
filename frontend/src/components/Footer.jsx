@@ -9,6 +9,7 @@ import {
   normalizeWhatsAppNumber,
 } from "../utils/common";
 import PhoneLink from "./PhoneLink";
+import YouTubeBrandIcon from "./YouTubeBrandIcon";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -122,9 +123,17 @@ const Footer = () => {
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#06a84e] transition-colors"
+                  className={
+                    link.isYouTubeBrand
+                      ? "flex h-10 w-10 items-center justify-center rounded-[10px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.2)] ring-1 ring-white/20 transition hover:brightness-105 hover:shadow-[0_4px_14px_rgba(204,0,0,0.35)]"
+                      : "w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#06a84e] transition-colors"
+                  }
                 >
-                  {link.icon}
+                  {link.isYouTubeBrand ? (
+                    <YouTubeBrandIcon className="h-[22px] w-[30px]" />
+                  ) : (
+                    link.icon
+                  )}
                 </a>
               ) : link.noLink ? (
                 <span

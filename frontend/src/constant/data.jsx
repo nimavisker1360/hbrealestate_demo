@@ -13,6 +13,8 @@ import { FaFacebook, FaInstagram } from "react-icons/fa6";
 
 export const PRIMARY_CONTACT_PHONE = "+90 552 607 89 00";
 export const PRIMARY_CONTACT_EMAIL = "nimabaghery@gmail.com";
+export const PRIMARY_YOUTUBE_URL =
+  "https://www.youtube.com/watch?v=cnClXEkf2HM";
 
 // properties data
 export const PROPERTIES = [
@@ -241,6 +243,11 @@ export const SOCIALS = {
       icon: <FaInstagram />,
       id: "instagram",
       noLink: true,
+    },
+    {
+      id: "youtube",
+      url: PRIMARY_YOUTUBE_URL,
+      isYouTubeBrand: true,
     },
   ],
 };
